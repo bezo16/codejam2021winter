@@ -18,6 +18,18 @@ export default {
     santa() {
       return this.$store.state.localStorage.santa
     },
+  },
+  mounted() {
+    setInterval(() => {
+      let reindeerLsd = 0
+      for(let i=0; i < this.reindeer; i++ ) {
+        let ranNum = Math.ceil(Math.random() * 100)
+        if(ranNum <= 5) reindeerLsd++
+      }
+      console.log(reindeerLsd)
+
+      this.$store.commit('localStorage/addLsd',this.santa)
+    }, 1000);
   }
 }
 </script>
