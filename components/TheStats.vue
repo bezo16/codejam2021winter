@@ -85,6 +85,7 @@ export default {
 
   },
   mounted() {
+    localStorage.clear()
     setInterval(() => {
       this.$store.commit('localStorage/setAchi',{name:'fastClicker',value:0})
     }, 10000);

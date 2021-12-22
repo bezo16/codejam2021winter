@@ -4,8 +4,11 @@ export const state = () => ({
   clickChance: 90,
 
   reindeer: 0,
+  reindeerProduced: 0,
   elf: 0,
+  elfProduced: 0,
   santa: 0,
+  santaProduced: 0,
 
 
 
@@ -46,4 +49,8 @@ export const mutations = {
   buySanta(state) {
     state.santa++
   },
+
+  updateProduction(state,obj) {
+    state[obj.name] += obj.value
+  }
 }
