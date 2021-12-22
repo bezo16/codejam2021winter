@@ -34,4 +34,16 @@ export const mutations = {
   setAchi(state,achi) {
     state.achievements[achi.name].value = achi.value
   },
+
+  buyReindeer(state) {
+    state.reindeer++
+  },
+
+  buyElf(state) {
+    state.elf++
+  },
+
+  buySanta(state) {
+    state.santa++
+  },
 }

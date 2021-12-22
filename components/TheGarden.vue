@@ -1,6 +1,8 @@
 <template>
   <section class="garden">
-
+      <h1>{{reindeer}}</h1>
+      <h1>{{elf}}</h1>
+      <h1>{{santa}}</h1>
   </section>
 </template>
 

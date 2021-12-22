@@ -56,14 +56,17 @@ export default {
     buyReindeer() {
       console.log('buying Reindeer')
       this.$store.commit('localStorage/addLsd',-1)
+      this.$store.commit('localStorage/buyReindeer')
     },
     buyElf() {
       console.log('buying Elf')
       this.$store.commit('localStorage/addLsd',-5)
+      this.$store.commit('localStorage/buyElf')
     },
     buySanta() {
       console.log('buying Santa')
       this.$store.commit('localStorage/addLsd',-15)
+      this.$store.commit('localStorage/buySanta')
     }
   },
   computed: {
