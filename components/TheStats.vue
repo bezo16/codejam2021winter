@@ -20,27 +20,33 @@
               <h3>Reindeer</h3>
               <p>basic reindeer which was caught in wild forest regions, he is not that big help in finding lsd but sometimes luck is on his side.</p>
             </div>
-            <button :disabled="lsd < 1" @click.self="buyReindeer">Buy Reindeer</button>
+            <button :disabled="lsd < 1" @click.self="buyReindeer">Buy Reindeer 1 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
           </div>
           <div class="entities-item">
             <img src="~/assets/img/entities/elf1.png" alt="">
             <div>
-              <h3>Reindeer</h3>
-              <p>basic reindeer which was caught in wild forest regions, he is not that big help in finding lsd but sometimes luck is on his side.</p>
+              <h3>Elf</h3>
+              <p>weird small creature which study effects of lsd all day, sure he will be usefull.</p>
             </div>
-            <button :disabled="lsd < 5" @click.self="buyElf">Buy Elf</button>
+            <button :disabled="lsd < 5" @click.self="buyElf">Buy Elf 5 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
           </div>
           <div class="entities-item">
             <img src="~/assets/img/entities/santa1.png" alt="">
             <div>
-              <h3>Reindeer</h3>
-              <p>basic reindeer which was caught in wild forest regions, he is not that big help in finding lsd but sometimes luck is on his side.</p>
+              <h3>Santa</h3>
+              <p>looks some mini version of santa, but dissapointment will fade away when he will show you how much LSD he has found</p>
             </div>
-            <button :disabled="lsd < 15" @click.self="buySanta">Buy Santa</button>
+            <button :disabled="lsd < 15" @click.self="buySanta">Buy Santa 15 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
           </div>
         </div>
 
-        <h1 v-if="active === 'tips'">tips</h1>
+        <div v-if="active === 'tips'">
+          <h2 class="title">Tips</h2>
+          <div v-for="(tip,index) in tips" :key="index" class="tips-item">
+            <h2 v-if="points < tip.score">unlocks at {{ tip.score }} points</h2>
+            <h2 v-else>{{ tip.content }}</h2>
+          </div>
+        </div>
 
 
         <div v-if="active === 'achievements'">
@@ -103,6 +109,9 @@ export default {
     ultraClicker() {
       return this.$store.state.localStorage.achievements.fastClicker
     },
+    tips() {
+      return this.$store.state.tips.tips
+    },
 
   },
   mounted() {
@@ -156,7 +165,6 @@ export default {
     padding: 3px 5px;
     margin: 5px;
     color: white;
-    cursor: pointer;
   }
 
   nav > button:hover {
@@ -195,11 +203,18 @@ export default {
 
   .entities-item > button {
     margin-left: auto;
-    margin-right: 15px;
-    padding: 3px 5px;
+    margin-right: 25px;
+    padding: 8px 12px;
     border: 1px solid white;
     color: white;
     background: none;
-    border-radius: 5px;
+    border-radius: 15px;
+  }
+
+  .tips-item {
+    background: rgb(31, 31, 2);
+    padding: 15px 0px 10px 15px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
   }
 </style>

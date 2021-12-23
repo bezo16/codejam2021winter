@@ -59,7 +59,6 @@ export default {
     height: 180px;
     animation: float 3.5s ease-in-out infinite;
     background: none;
-    cursor: pointer;
   }
 
   .gift-img:active {

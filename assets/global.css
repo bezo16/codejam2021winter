@@ -8,6 +8,7 @@
 
 body {
   font-family: 'Mountains of Christmas', cursive;
+  cursor: url(https://cdn.custom-cursor.com/db/pointer/32/Christmas_Candies_Pointer.png) , pointer !important;
 }
 
 @keyframes float {
@@ -26,6 +27,11 @@ body {
   width: 20px;
 }
 
+.buy-lsd {
+  width: 12px;
+}
+
+
 button {
-  cursor: pointer;
+  cursor: url(https://cdn.custom-cursor.com/db/pointer/32/christmas_mittens_and_stocking_pointer.png) , pointer !important;
 }
