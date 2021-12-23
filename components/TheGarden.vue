@@ -76,7 +76,6 @@ export default {
       }
       this.$store.commit('localStorage/addLsd',santaLsd)
       this.$store.commit('localStorage/updateProduction',{name:'santaProduced',value:santaLsd})
-
     }, 1000);
   }
 }

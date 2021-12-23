@@ -8,15 +8,15 @@
          <button @click="active = 'achievements'">achievements</button>
        </nav>
 
-        <h2>LSD: {{ lsd }} </h2>
+        <h2>{{ lsd }} <img class="lsd" src="~/assets/img/lsd.svg" alt=""> </h2>
 
         <h1 v-if="active === 'upgrades'">upgrades</h1>
 
         <div v-if="active === 'entities'">
 
-          <button :disabled="lsd <= 1" @click.self="buyReindeer">Buy Reindeer</button>
-          <button :disabled="lsd <= 5" @click.self="buyElf">Buy Elf</button>
-          <button :disabled="lsd <= 15" @click.self="buySanta">Buy Santa</button>
+          <button :disabled="lsd < 1" @click.self="buyReindeer">Buy Reindeer</button>
+          <button :disabled="lsd < 5" @click.self="buyElf">Buy Elf</button>
+          <button :disabled="lsd < 15" @click.self="buySanta">Buy Santa</button>
         </div>
 
         <h1 v-if="active === 'tips'">tips</h1>
