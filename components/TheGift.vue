@@ -16,13 +16,13 @@ export default {
     clickChance() {
       return this.$store.state.localStorage.clickChance
     },
-    clickValue() {
-      return this.$store.state.localStorage.clickValue
+    clickPower() {
+      return this.$store.state.localStorage.clickPower
     },
   },
   methods: {
     addPoints() {
-      this.$store.commit('localStorage/addPoints',1)
+      this.$store.commit('localStorage/addPoints',this.clickPower)
       this.$store.state.localStorage.achievements.fastClicker.value++
 
       let ranNum = Math.ceil(Math.random() * 100)

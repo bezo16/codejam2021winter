@@ -3,7 +3,7 @@ export const state = () => ({
   lsd: 0,
   clickChance: 90,
   clickProduced: 0,
-  clickValue: 0,
+  clickPower: 1,
 
   reindeer: 0,
   reindeerPositions: [],
@@ -30,9 +30,15 @@ export const state = () => ({
   upgrades: {
     galvanization: false,
     renascence: false,
+    profusion: false,
+    sapidity: false,
+    sapidity: exemplary ,
     all: [
-      {name:'galvanization',cost:100,update:'clickPower',value:1,desc:'increase your click power by 1'},
-      {name:'renascence',cost:1000,update:'clickPower',value:2,desc:'increase your click power by 2'},
+      {name:'galvanization',cost:20,update:'clickPower',value:1,desc:'increase your click power by 1'},
+      {name:'renascence',cost:400,update:'clickPower',value:2,desc:'increase your click power by 2'},
+      {name:'profusion',cost:50,update:'reindeerChance',value:5,desc:'add some LSD to reindeer food,increasing their chance to find LSD by 5%'},
+      {name:'sapidity',cost:200,update:'elfChance',value:15,desc:'add some LSD to elfs food,increasing their chance to find LSD by 15%'},
+      {name:'exemplary ',cost:400,update:'santaChance',value:25,desc:'add some LSD to elfs food,increasing their chance to find LSD by 25%'},
     ]
   }
 
@@ -81,6 +87,7 @@ export const mutations = {
   },
 
   updateOne(state,obj) {
+    console.log(obj)
     state[obj.name] += obj.value
   },
 }
