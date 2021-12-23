@@ -32,7 +32,7 @@ export const state = () => ({
     renascence: false,
     profusion: false,
     sapidity: false,
-    sapidity: exemplary ,
+    exemplary: false ,
     all: [
       {name:'galvanization',cost:20,update:'clickPower',value:1,desc:'increase your click power by 1'},
       {name:'renascence',cost:400,update:'clickPower',value:2,desc:'increase your click power by 2'},

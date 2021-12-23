@@ -15,7 +15,8 @@
           <div v-for="(upgr,index) in upgrades.all" :key="'up' + index" class="upgrade">
             <h3 v-if="!upgrades[upgr.name]" class="upgrade-name">{{ upgr.name }}</h3>
             <p v-if="!upgrades[upgr.name]" class="upgrade-desc">{{ upgr.desc }}</p>
-            <button v-if="!upgrades[upgr.name]" :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">Buy</button>
+            <button v-if="!upgrades[upgr.name]" :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">
+              Buy {{ upgr.cost }} <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
           </div>
         </div>
 
@@ -266,4 +267,30 @@ export default {
     border-radius: 5px;
     margin-bottom: 20px;
   }
+
+  .upgrade {
+    background: rgb(31, 31, 2);
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .upgrade > h3 {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  .upgrade > p {
+    margin-bottom: 10px;
+  }
+
+  .upgrade > button {
+    margin-right: 25px;
+    padding: 8px 12px;
+    border: 1px solid white;
+    color: white;
+    background: none;
+    border-radius: 15px;
+  }
+
 </style>
