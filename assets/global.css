@@ -31,6 +31,10 @@ body {
   width: 12px;
 }
 
+.lock {
+  margin-right: 5px;
+}
+
 
 button {
   cursor: url(https://cdn.custom-cursor.com/db/pointer/32/christmas_mittens_and_stocking_pointer.png) , pointer !important;

@@ -10,7 +10,14 @@
 
         <h2 class="lsd-h2">{{ lsd }} <img class="lsd" src="~/assets/img/lsd.svg" alt=""> </h2>
 
-        <h1 v-if="active === 'upgrades'">upgrades</h1>
+        <div v-if="active === 'upgrades'">
+          <h2 class="title">Upgrades</h2>
+          <div v-for="(upgr,index) in upgrades.all" :key="'up' + index" class="upgrade">
+            <h3 v-if="!upgrades[upgr.name]" class="upgrade-name">{{ upgr.name }}</h3>
+            <p v-if="!upgrades[upgr.name]" class="upgrade-desc">{{ upgr.desc }}</p>
+            <button v-if="!upgrades[upgr.name]" :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">Buy</button>
+          </div>
+        </div>
 
         <div v-if="active === 'entities'">
           <h2 class="title">Entities</h2>
@@ -42,27 +49,33 @@
 
         <div v-if="active === 'tips'">
           <h2 class="title">Tips</h2>
-          <div v-for="(tip,index) in tips" :key="index" class="tips-item">
-            <h2 v-if="points < tip.score">unlocks at {{ tip.score }} points</h2>
+          <div v-for="(tip,index) in tips" :key="'tips' +index" class="tips-item">
+            <h2 v-if="points < tip.score"><img class="lock" src="~/assets/img/lock.svg" alt=""> unlocks at {{ tip.score }} points</h2>
             <h2 v-else>{{ tip.content }}</h2>
+            <span class="tips-category" :class="tip.category">{{ tip.category }}</span>
           </div>
         </div>
 
 
         <div v-if="active === 'achievements'">
-          <div v-if="points >= 100">
-            <h1>Frist Steps</h1>
+          <h2 class="title">Achievements</h2>
+          <div class="achi" v-if="points >= 10">
+            <h1>First Steps</h1>
+            <p>clicked 10 times</p>
+          </div>
+          <div class="achi" v-if="points >= 100">
+            <h1>big advancement</h1>
             <p>clicked 100 times</p>
           </div>
-          <div v-if="points >= 1000">
-            <h1>big advancement</h1>
-            <p>clicked 1000 times</p>
+          <div class="achi" v-if="points >= 500">
+            <h1>master fapper</h1>
+            <p>clicked 500 times</p>
           </div>
-          <div v-if="fastClicker.unlocked">
+          <div class="achi" v-if="fastClicker.unlocked">
             <h1>Fast clicker</h1>
             <p>clicked 40times in 10 seconds</p>
           </div>
-          <div v-if="ultraClicker.unlocked">
+          <div class="achi" v-if="ultraClicker.unlocked">
             <h1>ultra clicker</h1>
             <p>clicked 70times in 10 seconds</p>
           </div>
@@ -94,7 +107,13 @@ export default {
       console.log('buying Santa')
       this.$store.commit('localStorage/addLsd',-15)
       this.$store.commit('localStorage/buySanta')
-    }
+    },
+    buyUpgrade(obj) {
+      console.log(obj)
+      this.$store.commit('localStorage/addLsd',-obj.cost)
+      this.$store.commit('localStorage/unlockUpgrade',{name:obj.name})
+      this.$store.commit('localStorage/updateOne',{name:obj.property,value:obj.value})
+    },
   },
   computed: {
     lsd() {
@@ -112,10 +131,13 @@ export default {
     tips() {
       return this.$store.state.tips.tips
     },
+    upgrades() {
+      return this.$store.state.localStorage.upgrades
+    },
 
   },
   mounted() {
-    localStorage.clear()
+    console.log(this.upgrades.all)
     setInterval(() => {
       this.$store.commit('localStorage/setAchi',{name:'fastClicker',value:0})
     }, 10000);
@@ -213,8 +235,35 @@ export default {
 
   .tips-item {
     background: rgb(31, 31, 2);
-    padding: 15px 0px 10px 15px;
+    padding: 25px 0px 20px 15px;
     font-size: 0.8rem;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .tips-category {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
+    font-size: 1.25rem;
+  }
+
+  .js {
+    color: yellow;
+  }
+  .css {
+    color: turquoise;
+  }
+  .html {
+    color: red;
+  }
+
+  .achi {
+    background: rgb(31, 31, 2);
+    padding: 15px 20px;
+    border-radius: 5px;
     margin-bottom: 20px;
   }
 </style>

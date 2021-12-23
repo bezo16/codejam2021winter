@@ -27,6 +27,15 @@ export const state = () => ({
     ultraClicker: {unlocked:false,value:0},
   },
 
+  upgrades: {
+    galvanization: false,
+    renascence: false,
+    all: [
+      {name:'galvanization',cost:100,update:'clickPower',value:1,desc:'increase your click power by 1'},
+      {name:'renascence',cost:1000,update:'clickPower',value:2,desc:'increase your click power by 2'},
+    ]
+  }
+
 })
 
 
@@ -42,6 +51,10 @@ export const mutations = {
   unlockAchi(state,achi) {
     console.log('mutation: unlockAchi')
     state.achievements[achi].unlocked = true
+  },
+
+  unlockUpgrade(state,obj) {
+    state.upgrades[obj.name] = true
   },
 
   setAchi(state,achi) {
@@ -65,5 +78,9 @@ export const mutations = {
 
   updateProduction(state,obj) {
     state[obj.name] += obj.value
-  }
+  },
+
+  updateOne(state,obj) {
+    state[obj.name] += obj.value
+  },
 }

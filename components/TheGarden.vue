@@ -1,8 +1,8 @@
 <template>
   <section class="garden">
-      <img v-for="(el,index) in elf" :key="index" class="entity" :style="`left:${elfPositions[index].left}%;top:${elfPositions[index].top}%;`" src="~/assets/img/entities/elf1.png" alt="">
-      <img v-for="(rein,index) in reindeer" :key="index" class="entity" :style="`left:${reindeerPositions[index].left}%;top:${reindeerPositions[index].top}%;`" src="~/assets/img/entities/reindeer1.png" alt="">
-      <img v-for="(sant,index) in santa" :key="index" class="entity" :style="`left:${santaPositions[index].left}%;top:${santaPositions[index].top}%;`" src="~/assets/img/entities/santa1.png" alt="">
+      <img v-for="(el,index) in elf" :key="'reindeer' + index" class="entity" :style="`left:${elfPositions[index].left}%;top:${elfPositions[index].top}%;`" src="~/assets/img/entities/elf1.png" alt="">
+      <img v-for="(rein,index) in reindeer" :key="'elf' +index" class="entity" :style="`left:${reindeerPositions[index].left}%;top:${reindeerPositions[index].top}%;`" src="~/assets/img/entities/reindeer1.png" alt="">
+      <img v-for="(sant,index) in santa" :key="'santa' +index" class="entity" :style="`left:${santaPositions[index].left}%;top:${santaPositions[index].top}%;`" src="~/assets/img/entities/santa1.png" alt="">
       <p>made by deers: {{ reindeerProduced }}  made by elf: {{ elfProduced }} made by santas: {{ santaProduced }} made by clicks {{ clickProduced }}</p>
   </section>
 </template>
