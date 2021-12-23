@@ -1,7 +1,9 @@
 <template>
   <section class="garden">
-      <img v-for="(santa,index) in elf" :key="index" class="entity" :style="`left:${elfPositions[index].left}%;top:${elfPositions[index].top}%;`" src="~/assets/img/entities/elf1.png" alt="">
-      <p>made by deers: {{ reindeerProduced }}  made by elf: {{ elfProduced }} made by santas: {{ santaProduced }}</p>
+      <img v-for="(el,index) in elf" :key="index" class="entity" :style="`left:${elfPositions[index].left}%;top:${elfPositions[index].top}%;`" src="~/assets/img/entities/elf1.png" alt="">
+      <img v-for="(rein,index) in reindeer" :key="index" class="entity" :style="`left:${reindeerPositions[index].left}%;top:${reindeerPositions[index].top}%;`" src="~/assets/img/entities/reindeer1.png" alt="">
+      <img v-for="(sant,index) in santa" :key="index" class="entity" :style="`left:${santaPositions[index].left}%;top:${santaPositions[index].top}%;`" src="~/assets/img/entities/santa1.png" alt="">
+      <p>made by deers: {{ reindeerProduced }}  made by elf: {{ elfProduced }} made by santas: {{ santaProduced }} made by clicks {{ clickProduced }}</p>
   </section>
 </template>
 
@@ -21,6 +23,9 @@ export default {
     },
     reindeerChance() {
       return this.$store.state.localStorage.reindeerChance
+    },
+    reindeerPositions() {
+      return this.$store.state.localStorage.reindeerPositions
     },
     elf() {
       return this.$store.state.localStorage.elf
@@ -42,6 +47,12 @@ export default {
     },
     santaChance() {
       return this.$store.state.localStorage.santaChance
+    },
+    santaPositions() {
+      return this.$store.state.localStorage.santaPositions
+    },
+    clickProduced() {
+      return this.$store.state.localStorage.clickProduced
     },
   },
   methods: {
@@ -81,7 +92,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .garden {
     flex: 1;
     height: 100%;
@@ -92,4 +103,5 @@ export default {
     position: absolute;
     width: 40px;
   }
+
 </style>

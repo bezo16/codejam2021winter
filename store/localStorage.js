@@ -2,6 +2,8 @@ export const state = () => ({
   points: 0,
   lsd: 0,
   clickChance: 90,
+  clickProduced: 0,
+  clickValue: 0,
 
   reindeer: 0,
   reindeerPositions: [],
@@ -48,6 +50,7 @@ export const mutations = {
 
   buyReindeer(state) {
     state.reindeer++
+    state.reindeerPositions.push({left:Math.random() * 90 + 5,top:Math.random() * 90 + 5})
   },
 
   buyElf(state) {
@@ -57,6 +60,7 @@ export const mutations = {
 
   buySanta(state) {
     state.santa++
+    state.santaPositions.push({left:Math.random() * 90 + 5,top:Math.random() * 90 + 5})
   },
 
   updateProduction(state,obj) {

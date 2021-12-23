@@ -15,7 +15,10 @@ export default {
     },
     clickChance() {
       return this.$store.state.localStorage.clickChance
-    }
+    },
+    clickValue() {
+      return this.$store.state.localStorage.clickValue
+    },
   },
   methods: {
     addPoints() {
@@ -23,7 +26,11 @@ export default {
       this.$store.state.localStorage.achievements.fastClicker.value++
 
       let ranNum = Math.ceil(Math.random() * 100)
-      if(ranNum < this.clickChance) this.$store.commit('localStorage/addLsd',1)
+      if(ranNum < this.clickChance) {
+        this.$store.commit('localStorage/addLsd',1)
+        this.$store.commit('localStorage/updateProduction',{name:'clickProduced',value: 1})
+
+      }
     }
   }
 }
