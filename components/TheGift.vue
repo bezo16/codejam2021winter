@@ -1,7 +1,8 @@
 <template>
   <section class="gift">
     <div class="gift-imgwrapper">
-      <img @click.stop="addPoints" class="gift-img" src="~/assets/img/gifts/gift1.png" alt="">
+      <img 
+       @click.stop="addPoints" class="gift-img" src="~/assets/img/gifts/gift1.png" alt="">
     </div>
     <h1 class="gift-points">{{ points }}</h1>
   </section>

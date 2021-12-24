@@ -2,20 +2,20 @@
   <section class="stats">
     <div class="stats-wrapper">
        <nav>
-         <button @click="active = 'upgrades'">upgrades</button>
-         <button @click="active = 'entities'">entities</button>
-         <button @click="active = 'tips'">tips</button>
-         <button @click="active = 'achievements'">achievements</button>
+         <button id="upgrades" @click="active = 'upgrades'">upgrades</button>
+         <button id="entities" @click="active = 'entities'">entities</button>
+         <button id="tips" @click="active = 'tips'">tips</button>
+         <button id="achievements" @click="active = 'achievements'">achievements</button>
        </nav>
 
         <h2 class="lsd-h2">{{ lsd }} <img class="lsd" src="~/assets/img/lsd.svg" alt=""> </h2>
 
         <div v-if="active === 'upgrades'">
           <h2 class="title">Upgrades</h2>
-          <div v-for="(upgr,index) in upgrades.all" :key="'up' + index" class="upgrade">
-            <h3 v-if="!upgrades[upgr.name]" class="upgrade-name">{{ upgr.name }}</h3>
-            <p v-if="!upgrades[upgr.name]" class="upgrade-desc">{{ upgr.desc }}</p>
-            <button v-if="!upgrades[upgr.name]" :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">
+          <div v-for="(upgr,index) in upgrades.all" :key="'up' + index" class="upgrade" :class="{hidden:upgrades[upgr.name]}">
+            <h3  class="upgrade-name">{{ upgr.name }}</h3>
+            <p  class="upgrade-desc">{{ upgr.desc }}</p>
+            <button  :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">
               Buy {{ upgr.cost }} <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
           </div>
         </div>

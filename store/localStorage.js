@@ -4,6 +4,7 @@ export const state = () => ({
   clickChance: 90,
   clickProduced: 0,
   clickPower: 1,
+  isTutorial: true,
 
   reindeer: 0,
   reindeerPositions: [],
@@ -90,4 +91,8 @@ export const mutations = {
     console.log(obj)
     state[obj.name] += obj.value
   },
+
+  finishTutorial(state) {
+    state.isTutorial = false
+  }
 }

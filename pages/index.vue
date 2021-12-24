@@ -1,5 +1,6 @@
 <template>
   <main class="main">
+    <WelcomingPage v-if="isTutorial" />
     <TheGarden />
     <TheGift />
     <TheStats />
@@ -8,7 +9,12 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  computed: {
+    isTutorial() {
+      return this.$store.state.localStorage.isTutorial
+    }
+  }
 }
 </script>
 
