@@ -1,7 +1,7 @@
 <template>
   <section class="gift">
     <div class="gift-imgwrapper">
-      <img 
+      <img
        @click.stop="addPoints" class="gift-img" src="~/assets/img/gifts/gift1.png" alt="">
     </div>
     <h1 class="gift-points">{{ points }}</h1>
@@ -10,6 +10,12 @@
 
 <script>
 export default {
+  data() {
+    return {
+      click: null,
+      click2: null,
+    }
+  },
   computed: {
     points() {
       return this.$store.state.localStorage.points
@@ -23,6 +29,9 @@ export default {
   },
   methods: {
     addPoints() {
+      console.log(this.click.paused)
+      if(this.click.paused) this.click.play()
+      else this.click2.play()
       this.$store.commit('localStorage/addPoints',this.clickPower)
       this.$store.state.localStorage.achievements.fastClicker.value++
 
@@ -33,6 +42,10 @@ export default {
 
       }
     }
+  },
+  mounted() {
+    this.click = new Audio('/click.wav')
+    this.click2 = new Audio('/click.wav')
   }
 }
 </script>
