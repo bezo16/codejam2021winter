@@ -91,21 +91,30 @@ export default {
   data() {
     return {
       active: 'entities',
+      bought1: null,
+      bought2: null,
     }
   },
   methods: {
     buyReindeer() {
+      console.log(this.bought1.paused)
+      if(this.bought1.paused) this.bought1.play()
+      else this.bought2.play()
       console.log('buying Reindeer')
       this.$store.commit('localStorage/addLsd',-1)
       this.$store.commit('localStorage/buyReindeer')
     },
     buyElf() {
       console.log('buying Elf')
+      if(this.bought1.paused) this.bought1.play()
+      else this.bought2.play()
       this.$store.commit('localStorage/addLsd',-5)
       this.$store.commit('localStorage/buyElf')
     },
     buySanta() {
       console.log('buying Santa')
+      if(this.bought1.paused) this.bought1.play()
+      else this.bought2.play()
       this.$store.commit('localStorage/addLsd',-15)
       this.$store.commit('localStorage/buySanta')
     },
@@ -138,6 +147,10 @@ export default {
 
   },
   mounted() {
+    this.bought1 = new Audio('/bought.wav')
+    this.bought2 = new Audio('/bought.wav')
+    this.bought1.volume = 0.1
+    this.bought2.volume = 0.1
     console.log(this.upgrades.all)
     setInterval(() => {
       this.$store.commit('localStorage/setAchi',{name:'fastClicker',value:0})
@@ -158,6 +171,7 @@ export default {
     justify-content: center;
     flex: 1;
   }
+
 
   .lsd-h2 {
     position: absolute;
@@ -293,5 +307,12 @@ export default {
     background: none;
     border-radius: 15px;
   }
+
+   button[disabled] {
+    background: grey;
+    color: rgb(56, 19, 19);
+    font-weight: bold;
+  }
+
 
 </style>
