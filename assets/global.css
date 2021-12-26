@@ -11,6 +11,10 @@ body {
   cursor: url(https://cdn.custom-cursor.com/db/pointer/32/Christmas_Candies_Pointer.png) , pointer !important;
 }
 
+button {
+  font-family: 'Mountains of Christmas', cursive;
+}
+
 @keyframes float {
 	0% {
 		transform: translatey(0px);
