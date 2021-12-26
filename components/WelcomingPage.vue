@@ -35,6 +35,7 @@ export default {
   .welpage-title {
     font-size: 4rem;
     margin-bottom: 50px;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px, 1px 1px 10px rgba(206,206,206,0);
   }
 
   .welpage-para {

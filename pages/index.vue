@@ -20,7 +20,10 @@ export default {
   computed: {
     isTutorial() {
       return this.$store.state.localStorage.isTutorial
-    }
+    },
+    lsd() {
+      return this.$store.state.localStorage.lsd
+    },
   },
   methods: {
     gardenClicked() {
@@ -35,6 +38,9 @@ export default {
   mounted() {
     this.audio = new Audio('/music.mp3')
     this.audio.volume = 0.02
+    setInterval(() => {
+      if(this.lsd >= 1000) this.$router.push('/end')
+    }, 1000);
   }
 }
 </script>

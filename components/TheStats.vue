@@ -178,15 +178,16 @@ export default {
   }
 
   nav {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   nav > button {
     background: none;
     border: 1px solid white;
-    border-radius: 5px;
-    padding: 3px 5px;
+    border-radius: 15px;
+    padding: 8px 12px;
     margin: 5px;
+    font-size: 1.75rem;
     color: white;
   }
 
