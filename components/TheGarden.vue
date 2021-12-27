@@ -1,8 +1,10 @@
 <template>
   <section class="garden">
-      <img v-for="(el,index) in elf" :key="'reindeer' + index" class="entity" :style="`left:${elfPositions[index].left}%;top:${elfPositions[index].top}%;`" src="~/assets/img/entities/elf1.png" alt="">
-      <img v-for="(rein,index) in reindeer" :key="'elf' +index" class="entity" :style="`left:${reindeerPositions[index].left}%;top:${reindeerPositions[index].top}%;`" src="~/assets/img/entities/reindeer1.png" alt="">
-      <img v-for="(sant,index) in santa" :key="'santa' +index" class="entity" :style="`left:${santaPositions[index].left}%;top:${santaPositions[index].top}%;`" src="~/assets/img/entities/santa1.png" alt="">
+      <transition-group name="fade">
+        <img v-for="(el,index) in elf" :key="'reindeer' + index" class="entity" :style="`left:${elfPositions[index].left}%;top:${elfPositions[index].top}%;`" src="~/assets/img/entities/elf1.png" alt="">
+        <img v-for="(rein,index) in reindeer" :key="'elf' +index" class="entity" :style="`left:${reindeerPositions[index].left}%;top:${reindeerPositions[index].top}%;`" src="~/assets/img/entities/reindeer1.png" alt="">
+        <img v-for="(sant,index) in santa" :key="'santa' +index" class="entity" :style="`left:${santaPositions[index].left}%;top:${santaPositions[index].top}%;`" src="~/assets/img/entities/santa1.png" alt="">
+      </transition-group>
   </section>
 </template>
 
@@ -102,5 +104,6 @@ export default {
     position: absolute;
     width: 40px;
   }
+
 
 </style>

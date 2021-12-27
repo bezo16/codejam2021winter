@@ -39,7 +39,7 @@ export default {
     this.audio = new Audio('/music.mp3')
     this.audio.volume = 0.02
     setInterval(() => {
-      if(this.lsd >= 1000) this.$router.push('/end')
+      if(this.lsd >= 2000) this.$router.push('/end')
     }, 1000);
   }
 }

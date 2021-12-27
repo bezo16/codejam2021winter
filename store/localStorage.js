@@ -1,7 +1,7 @@
 export const state = () => ({
   points: 0,
   lsd: 0,
-  clickChance: 90,
+  clickChance: 50,
   clickProduced: 0,
   clickPower: 1,
   isTutorial: true,

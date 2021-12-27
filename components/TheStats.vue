@@ -10,78 +10,79 @@
 
         <h2 class="lsd-h2">{{ lsd }} <img class="lsd" src="~/assets/img/lsd.svg" alt=""> </h2>
 
-        <div v-if="active === 'upgrades'">
-          <h2 class="title">Upgrades</h2>
-          <div v-for="(upgr,index) in upgrades.all" :key="'up' + index" class="upgrade" :class="{hidden:upgrades[upgr.name]}">
-            <h3  class="upgrade-name">{{ upgr.name }}</h3>
-            <p  class="upgrade-desc">{{ upgr.desc }}</p>
-            <button  :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">
-              Buy {{ upgr.cost }} <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
-          </div>
-        </div>
 
-        <div v-if="active === 'entities'">
-          <h2 class="title">Entities</h2>
-          <div class="entities-item">
-            <img src="~/assets/img/entities/reindeer1.png" alt="">
-            <div>
-              <h3>Reindeer</h3>
-              <p>basic reindeer which was caught in wild forest regions, he is not that big help in finding lsd but sometimes luck is on his side.</p>
+          <div v-if="active === 'upgrades'" :key="1">
+            <h2 class="title">Upgrades</h2>
+            <div v-for="(upgr,index) in upgrades.all" :key="'up' + index" class="upgrade" :class="{hidden:upgrades[upgr.name]}">
+              <h3  class="upgrade-name">{{ upgr.name }}</h3>
+              <p  class="upgrade-desc">{{ upgr.desc }}</p>
+              <button  :disabled="lsd < upgr.cost" @click.self="buyUpgrade({cost:upgr.cost,name:upgr.name,property:upgr.update,value:upgr.value})">
+                Buy {{ upgr.cost }} <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
             </div>
-            <button :disabled="lsd < 1" @click.self="buyReindeer">Buy Reindeer 1 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
           </div>
-          <div class="entities-item">
-            <img src="~/assets/img/entities/elf1.png" alt="">
-            <div>
-              <h3>Elf</h3>
-              <p>weird small creature which study effects of lsd all day, sure he will be usefull.</p>
+
+          <div v-if="active === 'entities'" :key="2">
+            <h2 class="title">Entities</h2>
+            <div class="entities-item">
+              <img src="~/assets/img/entities/reindeer1.png" alt="">
+              <div>
+                <h3>Reindeer</h3>
+                <p>basic reindeer which was caught in wild forest regions, he is not that big help in finding lsd but sometimes luck is on his side.</p>
+              </div>
+              <button :disabled="lsd < 1" @click.self="buyReindeer">Buy Reindeer 1 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
             </div>
-            <button :disabled="lsd < 5" @click.self="buyElf">Buy Elf 5 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
-          </div>
-          <div class="entities-item">
-            <img src="~/assets/img/entities/santa1.png" alt="">
-            <div>
-              <h3>Santa</h3>
-              <p>looks some mini version of santa, but dissapointment will fade away when he will show you how much LSD he has found</p>
+            <div class="entities-item">
+              <img src="~/assets/img/entities/elf1.png" alt="">
+              <div>
+                <h3>Elf</h3>
+                <p>weird small creature which study effects of lsd all day, sure he will be usefull.</p>
+              </div>
+              <button :disabled="lsd < 5" @click.self="buyElf">Buy Elf 5 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
             </div>
-            <button :disabled="lsd < 15" @click.self="buySanta">Buy Santa 15 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
-          </div>
-        </div>
-
-        <div v-if="active === 'tips'">
-          <h2 class="title">Tips</h2>
-          <div v-for="(tip,index) in tips" :key="'tips' +index" class="tips-item">
-            <h2 v-if="points < tip.score"><img class="lock" src="~/assets/img/lock.svg" alt=""> unlocks at {{ tip.score }} points</h2>
-            <h2 v-else>{{ tip.content }}</h2>
-            <span class="tips-category" :class="tip.category">{{ tip.category }}</span>
-          </div>
-        </div>
-
-
-        <div v-if="active === 'achievements'">
-          <h2 class="title">Achievements</h2>
-          <div class="achi" v-if="points >= 10">
-            <h1>First Steps</h1>
-            <p>clicked 10 times</p>
-          </div>
-          <div class="achi" v-if="points >= 100">
-            <h1>big advancement</h1>
-            <p>clicked 100 times</p>
-          </div>
-          <div class="achi" v-if="points >= 500">
-            <h1>master fapper</h1>
-            <p>clicked 500 times</p>
-          </div>
-          <div class="achi" v-if="fastClicker.unlocked">
-            <h1>Fast clicker</h1>
-            <p>clicked 40times in 10 seconds</p>
-          </div>
-          <div class="achi" v-if="ultraClicker.unlocked">
-            <h1>ultra clicker</h1>
-            <p>clicked 70times in 10 seconds</p>
+            <div class="entities-item">
+              <img src="~/assets/img/entities/santa1.png" alt="">
+              <div>
+                <h3>Santa</h3>
+                <p>looks some mini version of santa, but dissapointment will fade away when he will show you how much LSD he has found</p>
+              </div>
+              <button :disabled="lsd < 15" @click.self="buySanta">Buy Santa 15 <img class="buy-lsd" src="~/assets/img/lsd.svg" alt=""></button>
+            </div>
           </div>
 
-        </div>
+          <div v-if="active === 'tips'" :key="3">
+            <h2 class="title">Tips</h2>
+            <div v-for="(tip,index) in tips" :key="'tips' +index" class="tips-item">
+              <h2 v-if="points < tip.score"><img class="lock" src="~/assets/img/lock.svg" alt=""> unlocks at {{ tip.score }} points</h2>
+              <h2 v-else>{{ tip.content }}</h2>
+              <span class="tips-category" :class="tip.category">{{ tip.category }}</span>
+            </div>
+          </div>
+
+
+          <div v-if="active === 'achievements'" :key="4">
+            <h2 class="title">Achievements</h2>
+            <div class="achi" v-if="points >= 10">
+              <h1>First Steps</h1>
+              <p>clicked 10 times</p>
+            </div>
+            <div class="achi" v-if="points >= 100">
+              <h1>big advancement</h1>
+              <p>clicked 100 times</p>
+            </div>
+            <div class="achi" v-if="points >= 500">
+              <h1>master fapper</h1>
+              <p>clicked 500 times</p>
+            </div>
+            <div class="achi" v-if="fastClicker.unlocked">
+              <h1>Fast clicker</h1>
+              <p>clicked 40times in 10 seconds</p>
+            </div>
+            <div class="achi" v-if="ultraClicker.unlocked">
+              <h1>ultra clicker</h1>
+              <p>clicked 70times in 10 seconds</p>
+            </div>
+
+          </div>
     </div>
   </section>
 </template>
